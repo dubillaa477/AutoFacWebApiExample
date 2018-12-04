@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.WebApi;
+using AutoFacWebExample.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,15 @@ namespace AutoFacWebExample
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             var builder = new ContainerBuilder();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //Get your HttpConfiguration
             var config = GlobalConfiguration.Configuration;
+            
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly())
+                .PropertiesAutowired();
+            //MY AUTOFAC
+            builder.RegisterType<GreetingsService>().As<IGreetingsService>();
+            //
+            
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }

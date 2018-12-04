@@ -2,7 +2,7 @@
 
 namespace AutoFacWebExample.Controllers
 {
-    internal class GreetingsService : IGreetingsService
+    public class GreetingsService : IGreetingsService
     {
 
         public string GetGreeting() {

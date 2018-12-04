@@ -13,23 +13,36 @@ namespace AutoFacWebExample.Controllers
         IGreetingsService service;
 
         //Do not delete because it is necessary to build the container
-        public GreetingsController() {
+        public GreetingsController()
+        {
 
             service = new GreetingsService();
-            
+
         }
 
-        public GreetingsController(IGreetingsService service) {
+        //public IGreetingsService GreetingsService { get; set; }
 
-            this.service = service;
-        }
+        //public GreetingsController(IGreetingsService service)
+        //{
+
+        //    this.service = service;
+        //}
+
+        //public string Get() {
+
+        //    return service.GetGreeting();
+
+        //    //return "Hello world!";
+        //}
 
         public string Get() {
-
             return service.GetGreeting();
-
-            //return "Hello world!";
         }
+
+        //public string Get()
+        //{
+        //    return GreetingsService.GetGreeting();
+        //}
 
 
 
